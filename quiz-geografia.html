@@ -1,0 +1,44 @@
+
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Quiz z geografii</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <h1>Quiz z geografii</h1>
+  </header>
+  <main>
+    <form id="quizForm">
+      <div class="question">
+        <p>1. Jaką stolicę ma Argentyna?</p>
+        <label><input type="radio" name="q1" value="a"> Santiago</label><br>
+        <label><input type="radio" name="q1" value="b"> Buenos Aires</label><br>
+        <label><input type="radio" name="q1" value="c"> Lima</label><br>
+        <label><input type="radio" name="q1" value="d"> Asuncion</label>
+      </div>
+      <button type="submit">Sprawdź wynik</button>
+    </form>
+    <div id="result"></div>
+  </main>
+  <script>
+    document.getElementById("quizForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      let score = 0;
+      const answers = {
+        q1: "b"
+      };
+      for (let key in answers) {
+        const selected = document.querySelector(`input[name="${key}"]:checked`);
+        if (selected && selected.value === answers[key]) {
+          score++;
+        }
+      }
+      document.getElementById("result").innerHTML = `<p>Twój wynik: ${score}/1</p>`;
+    });
+  </script>
+</body>
+</html>
